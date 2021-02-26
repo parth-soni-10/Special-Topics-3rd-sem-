@@ -1,25 +1,26 @@
-//WAP to find the sum of two fractions.
 #include <stdio.h>
 
-struct frac
+typedef struct
 {
     int num,denom;
-}x,y;
-int input1()
+}frac;
+frac input1(frac x)
 {
-    printf("Enter the numerator for Fraction 1:-- ");
+    printf("\n Numerator Fraction 1:-- ");
     scanf("%d",&x.num);
-    printf("Enter the denominator for Fraction 1:-- ");
+    printf("\n Denominator Fraction 1:-- ");
     scanf("%d",&x.denom);
+    return x;
 }
-int input2()
+frac input2(frac y)
 {
-    printf("Enter the numerator for Fraction 2:-- ");
+    printf("\n Numerator Fraction 2:-- ");
     scanf("%d",&y.num);
-    printf("Enter the denominator for Fraction 2:-- ");
+    printf("\n Denominator Fraction 2:-- ");
     scanf("%d",&y.denom);
+    return y;
 }
-int gcd_calc()
+frac gcd_calc(frac x,frac y)
 {
     int gcd;
     int a = (x.num*y.denom)+(y.num*x.denom);
@@ -29,11 +30,12 @@ int gcd_calc()
         if (a%i==0 && b%i==0)
             gcd = i;
     }
-    printf("The added fraction is %d/%d",a/gcd,b/gcd);
+    printf("\n The added fraction of %d/%d and %d/%d is %d/%d",x.num,x.denom,y.num,y.denom,a/gcd,b/gcd);
 }
 int main()
 {
-    input1();
-    input2();
-    gcd_calc();
+    frac x,y;
+    x=input1(x);
+    y=input2(y);
+    gcd_calc(x,y);
 }
