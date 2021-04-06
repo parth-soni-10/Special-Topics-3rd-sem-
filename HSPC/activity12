@@ -1,0 +1,74 @@
+#include <stdio.h>
+struct Fraction
+{
+	int n , d;
+};
+typedef struct Fraction Frac;
+
+struct EgyptianFraction
+{
+	int nof;
+	Frac fractions[100];
+	Frac sum;
+}; 
+typedef struct EgyptianFraction Efrac;
+Efrac input_one_function()
+{
+	Efrac input;
+	scanf("%d",input.nof);
+	for(int i = 0 ; i<input.nof;i++)
+	{
+	input.fractions[i].n=1;
+	scanf("%d"&input.fractions[i].d);
+}
+return input;
+}
+void input_n_fractions(int n , Efrac efracs[n])
+{
+	int div ;
+	for(int i = 1 ; i<=n&&i<=d;i++ )
+	{
+	if(n%i==0&&d%i==0)
+		div=i;
+}
+return div;
+}
+void compute_one_frac(Efrac *eFrac)
+{
+	eFrac -> sum.n=0;
+	eFrac-> sum.d = 1;
+ for (int i = 0; i < eFrac->nof; i++)
+{
+ eFrac->sum.n = (eFrac->sum.n * eFrac->fractions[i].d) + (eFrac->fractions[i].n * eFrac->sum.d);
+    eFrac->sum.d = eFrac->sum.d * eFrac->fractions[i].d;
+}
+int div = computeGCD(eFrac->sum.n, eFrac->sum.d);
+ 	eFrac->sum.n /= div;
+	eFrac->sum.d /= div;
+}
+void compute_n_frac(int n, EFrac eFracs[n])
+{
+	for (int i = 0; i < n; i++)
+    	compute_one_frac(&eFracs[i]);
+}
+void output_one_frac(EFrac eFraction)
+{
+	for (int i = 0; i < eFraction.nof-1; i++)
+    	printf("%d/%d = %d/%d", eFraction.fractions[i].n, eFraction.fractions[i].d, eFraction.sum.n, eFraction.sum.d);
+} 
+void output_n_fracs(int n, EFrac eFractions[n])
+{
+	for (int i = 0; i < n; i++)
+    	output_one_frac(eFractions[i]);
+}
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	EFrac eFractions[n];
+	input_n_fractions(n, eFractions);
+	compute_n_frac(n, eFractions);
+	output_n_fracs(n, eFractions);
+ 
+	return 0;
+}
